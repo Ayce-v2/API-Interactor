@@ -16,21 +16,28 @@
 <script>
 
     let jokeLine = {};
+    
 
     async function generateJoke(event) {
         const httpResponse = await fetch("https://official-joke-api.appspot.com/random_joke")
         const body = await httpResponse.json();
-        console.log(body);
+        jokeLine = body; 
+        
 
         renderJoke();
 
-        //render
+        
     }
 
     function renderJoke() {
+        let type = jokeLine.type;
+        let setup = jokeLine.setup;
+        let punchline = jokeLine.punchline;
+        let id = jokeLine.id; 
         
 
         const jokeDiv = document.getElementById("joke");
+        jokeDiv.innerText = jokeLine.setup + " " + jokeLine.punchline;
 
     }
 
